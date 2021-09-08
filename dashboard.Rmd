@@ -39,3 +39,9 @@ df %>%
   DT::datatable(escape = F, options = list(pageLength = 25))
 ```
 
+
+<br/>
+
+---
+
+❤️ made for shrut
