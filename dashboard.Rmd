@@ -1,0 +1,40 @@
+---
+title: "TTIDFL"
+date: "Updated: `r format(Sys.Date(), format='%B %d %Y')`"
+output: 
+  html_document:
+    toc: false
+    toc_depth: 4
+---
+
+```{r setup, include=FALSE}
+# knitr options
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.retina = 4)
+```
+
+
+```{r message=FALSE, warning=FALSE}
+# Libraries
+pacman::p_load(tidyverse, janitor)
+
+# Data
+df <- read_csv(here::here("df.csv"))
+```
+
+<br/>
+
+List credits: [kfangurl](https://thefangirlverdict.com/index/all-reviews/full-list-of-shows/)
+
+<br/>
+
+```{r}
+df %>%
+  mutate(
+    source = str_c('<a href="http://', url, '" target="_blank">', source, '</a>')
+  ) %>%
+  select(-url) %>% 
+  arrange(rating, desc(year)) %>%
+  drop_na(rating) %>% 
+  DT::datatable(escape = F, options = list(pageLength = 25))
+```
+
