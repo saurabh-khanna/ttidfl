@@ -29,12 +29,13 @@ List credits: [kfangurl](https://thefangirlverdict.com/index/all-reviews/full-li
 
 ```{r}
 df %>%
+  drop_na(rating) %>% 
   mutate(
-    source = str_c('<a href="http://', url, '" target="_blank">', source, '</a>')
+    source = str_c('<a href="', url, '" target="_blank">', source, '</a>'),
+    rating = fct_relevel(rating, 'A++', 'A+', 'A', 'A-','B++','B+','B','B-','C++', 'C+', 'C', 'C-','D++','D+','D','D-')
   ) %>%
   select(-url) %>% 
-  arrange(rating, desc(year)) %>%
-  drop_na(rating) %>% 
+  arrange(desc(year), rating) %>%
   DT::datatable(escape = F, options = list(pageLength = 25))
 ```
 
