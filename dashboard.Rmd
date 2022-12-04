@@ -1,6 +1,6 @@
 ---
 title: "TTIDFL"
-date: "Updated: `r format(Sys.Date() + 1, format='%B %d, %Y')`"
+date: "Updated: `r format(Sys.Date(), format='%B %d, %Y')`"
 output: 
   html_document:
     toc: false
@@ -24,6 +24,8 @@ df <- read_csv(here::here("df.csv"))
 <br/>
 
 List credits: [kfangurl](https://thefangirlverdict.com/index/all-reviews/full-list-of-shows/)
+
+Code [here](https://github.com/saurabh-khanna/ttidfl).
 
 <br/>
 
