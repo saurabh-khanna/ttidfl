@@ -31,11 +31,12 @@ Code [here](https://github.com/saurabh-khanna/ttidfl).
 
 ```{r}
 df %>%
-  drop_na(rating) %>% 
+  drop_na(rating) %>%
   mutate(
     source = str_c('<a href="', url, '" target="_blank">', source, '</a>'),
     rating = fct_relevel(rating, 'A++', 'A+', 'A', 'A-','B++','B+','B','B-','C++', 'C+', 'C', 'C-','D++','D+','D','D-')
   ) %>%
+  filter(rating %in% c('A++', 'A+', 'A', 'A-','B++','B+','B','B-','C++', 'C+', 'C', 'C-','D++','D+','D','D-')) %>% 
   select(-url) %>% 
   arrange(desc(year), rating) %>%
   DT::datatable(escape = F, options = list(pageLength = 25))
