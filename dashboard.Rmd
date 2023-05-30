@@ -39,7 +39,8 @@ df %>%
   filter(rating %in% c('A++', 'A+', 'A', 'A-','B++','B+','B','B-','C++', 'C+', 'C', 'C-','D++','D+','D','D-')) %>% 
   select(-url) %>% 
   arrange(desc(year), rating) %>%
-  DT::datatable(escape = F, options = list(pageLength = 25))
+  rename(Show = source, Rating = rating, Year = year) %>% 
+  DT::datatable(escape = F, options = list(pageLength = 25), filter = 'top')
 ```
 
 
