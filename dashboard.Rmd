@@ -34,12 +34,13 @@ df %>%
   drop_na(rating) %>%
   mutate(
     source = str_c('<a href="', url, '" target="_blank">', source, '</a>'),
-    rating = fct_relevel(rating, 'A++', 'A+', 'A', 'A-','B++','B+','B','B-','C++', 'C+', 'C', 'C-','D++','D+','D','D-')
+    rating = fct_relevel(rating, 'A++', 'A+', 'A', 'A-','B++','B+','B','B-','C++', 'C+', 'C', 'C-','D++','D+','D','D-'),
+    year = as.integer(year)
   ) %>%
   filter(rating %in% c('A++', 'A+', 'A', 'A-','B++','B+','B','B-','C++', 'C+', 'C', 'C-','D++','D+','D','D-')) %>% 
   select(-url) %>% 
   arrange(desc(year), rating) %>%
-  rename(Show = source, Rating = rating, Year = year) %>% 
+  rename(Show = source, Rating = rating, Year = year) %>%
   DT::datatable(escape = F, options = list(pageLength = 25), filter = 'top')
 ```
 
