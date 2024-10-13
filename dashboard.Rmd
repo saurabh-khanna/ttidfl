@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.retina
 pacman::p_load(tidyverse, janitor)
 
 # Data
-df <- read_csv(here::here("df.csv"))
+df <- read_csv("df.csv")
 ```
 
 <br/>
