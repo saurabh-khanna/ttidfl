@@ -87,7 +87,7 @@ if st.button("Sunnim, click here to update!"):
     df = pd.DataFrame({"source": names, "url": urls, "rating": grades})
     
     # Step 4: Data cleaning and saving
-    df = df.replace("NA", np.NaN)
+    df = df.replace("NA", np.nan)
     df.dropna(inplace=True)
     df["year"] = df.apply(lambda row: re.search(r"\d+", row["url"]).group() if re.search(r"\d+", row["url"]) else None, axis=1)
 
