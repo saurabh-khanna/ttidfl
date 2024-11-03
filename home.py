@@ -32,12 +32,10 @@ st.sidebar.title("🫰🏻 TTIDFL")
 st.sidebar.write("&nbsp;")
 st.sidebar.image("https://korean-binge.com/wp-content/uploads/2024/04/2024-lovely-runner-tvn8951564812516606301.jpg")
 st.sidebar.write("Made for sunnim 💜")
-st.sidebar.write("&nbsp;")
 st.sidebar.info("List credits: [kfangurl](https://thefangirlverdict.com/)")
 
 st.write("&nbsp;")
 update_button = st.button("🧣 Sunnim, click here to update!", type="primary")
-st.write("&nbsp;")
 
 if not update_button:
     with st.container(border=True):
