@@ -23,6 +23,8 @@ df <- read_csv("df.csv")
 
 <br/>
 
+![](https://c.tenor.com/BIEJj8IRvKEAAAAd/reply-1988.gif)
+
 List credits: [kfangurl](https://thefangirlverdict.com/index/all-reviews/full-list-of-shows/)
 
 Code [here](https://github.com/saurabh-khanna/ttidfl).
@@ -32,6 +34,7 @@ Code [here](https://github.com/saurabh-khanna/ttidfl).
 ```{r}
 df %>%
   drop_na(rating) %>%
+  distinct(url, .keep_all = TRUE) %>%
   mutate(
     source = str_c('<a href="', url, '" target="_blank">', source, '</a>'),
     rating = fct_relevel(rating, 'A++', 'A+', 'A', 'A-','B++','B+','B','B-','C++', 'C+', 'C', 'C-','D++','D+','D','D-'),
@@ -41,7 +44,7 @@ df %>%
   select(-url) %>% 
   arrange(desc(year), rating) %>%
   rename(Show = source, Rating = rating, Year = year) %>%
-  DT::datatable(escape = F, options = list(pageLength = 25), filter = 'top')
+  DT::datatable(escape = F, options = list(pageLength = 100), filter = 'top')
 ```
 
 
