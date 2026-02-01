@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run notebook to CSV",
+			"type": "shell",
+			"command": "python - <<'PY'\nimport nbformat\nfrom nbconvert.preprocessors import ExecutePreprocessor\nfrom nbconvert import HTMLExporter\nfrom pathlib import Path\n\nnb_path = Path('update.ipynb')\nnb = nbformat.read(nb_path.open(), as_version=4)\n\n# Execute\nep = ExecutePreprocessor(timeout=1200, kernel_name='python3')\nep.preprocess(nb, {'metadata': {'path': str(nb_path.parent)}})\n\n# Save executed notebook (optional)\nwith nb_path.open('w') as f:\n    nbformat.write(nb, f)\n\n# Expect notebook to write df.csv itself; verify it exists\ncsv = Path('df.csv')\nprint('CSV exists:', csv.exists(), 'size:', csv.stat().st_size if csv.exists() else 0)\nPY",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}
